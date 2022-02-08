@@ -13,13 +13,21 @@
 		<?php
 			// Опция для загрузки дополнительных css файлов
 			if (@count($files) > 0) {
-				foreach ($files as $key => $value) {
-					echo '<link rel="stylesheet" type="text/css" href="/assets/css/'.$value.'">';
+				foreach ($files as $css) {
+					echo '<link rel="stylesheet" type="text/css" href="/assets/css/'.$css.'">';
 				}
 			}
 		?>
 		<script type="text/javascript" src="/assets/js/jquery.js"></script>
 		<script type="text/javascript" src="/assets/js/sample.js"></script>
+		<?php
+			// Опция для загрузки дополнительных css файлов
+			if (@count($jsFiles) > 0) {
+				foreach ($jsFiles as $js) {
+					echo '<script type="text/javascript" src="/assets/js/'.$js.'"></script>';
+				}
+			}
+		?>
 	</head>
 
 	<header>

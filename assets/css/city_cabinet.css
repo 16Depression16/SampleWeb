@@ -18,18 +18,19 @@ section.cabinet .card-info {
 .logout, .create-thread {
 	display: block;
 	margin-top: 20px;
-    border: none;
-    outline: none;
-    padding: 5px 0px;
-    padding-bottom: 7px;
-    font-size: 18px;
-    background: none;
-    color: black;
-    cursor: pointer;
-    border-style: solid;
-    border-image: linear-gradient(125deg, #292E4990, #53697690) 1 200%;
-    border-image-slice: 1;
-    letter-spacing: 2px;
+	text-decoration: none;
+	border: none;
+	outline: none;
+	padding: 5px 0px;
+	padding-bottom: 7px;
+	font-size: 18px;
+	background: none;
+	color: black;
+	cursor: pointer;
+	border-style: solid;
+	border-image: linear-gradient(125deg, #292E4990, #53697690) 1 200%;
+	border-image-slice: 1;
+	letter-spacing: 2px;
 }
 
 .create-thread {
@@ -44,8 +45,8 @@ section.cabinet .card-info {
 }
 
 .logout:hover , .create-thread:hover{
-    background: linear-gradient(125deg, #292E4990, #53697690);
-    color: white;
+	background: linear-gradient(125deg, #292E4990, #53697690);
+	color: white;
 }
 
 .name-fio {
@@ -165,8 +166,8 @@ form > div > select {
 
 
 .input-file {
-  opacity: 0;
-  display: none;
+	opacity: 0;
+	display: none;
 }
 
 .input-trigger {
@@ -174,7 +175,7 @@ form > div > select {
 }
 
 .input-trigger:hover {
-  opacity: 0.8;
+	opacity: 0.8;
 }
 
 footer {

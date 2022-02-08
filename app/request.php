@@ -49,6 +49,39 @@
 		exit(toJson(['success' => true, 'register' => true, 'message' => 'Вы успешно зарегистрировались.']));
 	}
 
+	// Create request - создание заявки в личном кабинете (обработчик)
+	if ($data['method'] == 'login') {
+		// Проверяем на пустые поля
+		foreach ($data as $key => $value) {
+			if (empty($value)) {
+				exit(toJson(['error' => true, 'message' => 'Поле ' . $key . ' не заполнено.']));
+			}
+		}
+
+		// Оформляем локальные переменные для регистрации
+		$login = $data['login'];
+		$password = $data['password'];
+
+		// Проверяем данные
+		$CheckLogin = selectOne($database, 'SELECT * FROM `users` WHERE login = "'.$login.'"');
+		if ($CheckLogin == null) {
+			exit(toJson(['error' => true, 'message' => 'Некорректный логин или пароль.']));
+		}
+
+		if (!password_verify($password, $CheckLogin['password'])) {
+			exit(toJson(['error' => true, 'message' => 'Некорректный логин или пароль.']));
+		}
+
+		// Удаляем пароль из выбранных данных, чтобы его не кешировать
+		unset($CheckLogin['password']);
+
+		// Добавляем данные в сессию.
+		$_SESSION['user'] = $CheckLogin;
+
+		// Сообщаем пользователю 
+		exit(toJson(['success' => true, 'login' => true, 'message' => 'Вы успешно авторизировались.']));
+	}
+
 	if ($data['method'] == 'login') {
 		// Проверяем на пустые поля
 		foreach ($data as $key => $value) {

@@ -1,5 +1,7 @@
 <?php
 	$files = ['city_cabinet.css'];
+	$jsFiles = ['cabient.js'];
+
 	include 'layout/head.php';
 
 	if (isset($_GET['logout'])) {
@@ -10,6 +12,9 @@
 	if (!isAuth()) {
 		exit('<script type="text/javascript">location.href="/";</script>');
 	}
+
+	include $_SERVER['DOCUMENT_ROOT'].'/app/functions/db.php';
+	$database = connect(); // call datbase
 ?>
 	<body>
 		<section class="cabinet">
