@@ -522,7 +522,8 @@ footer .container .social img {
 }
 
 .result-register p,
-.result-login p {
+.result-login p,
+.result p {
 	margin: 0;
 	margin-top: 20px;
 	text-align: left; 

@@ -1,6 +1,6 @@
 <?php
 	$files = ['city_cabinet.css'];
-	$jsFiles = ['cabient.js'];
+	$jsFiles = ['cabinet.js'];
 
 	include 'layout/head.php';
 
@@ -70,18 +70,23 @@
 
 			<form class="modal-content">
 				<div class="form-item">
-					<input type="text" name="register_fio" placeholder="Название" required="">
+					<input type="text" name="local-title" placeholder="Название" required="">
 				</div>
 
 				<div class="form-item">
-					<textarea name="tallback-reason" placeholder="Описание" required="" maxlength="120"></textarea>
+					<textarea name="local-description" placeholder="Описание" required="" maxlength="120"></textarea>
 				</div>
 
 				<div class="form-item">
-					<select>
+					<select name="local-category">
 						<option selected="" disabled="">Выберите категорию</option>
-						<option>Дороги</option>
-						<option>Мосты</option>
+						<?php
+							$category = selectAll($database, 'SELECT * FROM category');
+
+							foreach ($category as $value) {
+								echo '<option value="'.$value['name'].'">'.$value['name'].'</option>';
+							}
+						?>
 					</select>
 				</div>
 
