@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>ProCity</title>
+
+		<link rel="stylesheet" type="text/css" href="assets/css/city.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/admin.css">
+
+		<script type="text/javascript" src="assets/js/jquery.js"></script>
+		<script type="text/javascript" src="assets/js/sample.js"></script>
+		<script type="text/javascript" src="assets/js/admin.js"></script>
+	</head>
+
+	<header>
+		<div class="container">
+			<div class="header-box">
+				<div class="logo">LOGO</div>
+				<div class="navigation">
+					<a href="#goto">Вход</a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<body>
+		<div class="container">
+			<div class="admin-content">
+				<div class="admin-nav">
+					<span>Навигация</span>
+					<a class="active-cat" data-button="choose" href="#category">Категории</a>
+					<a data-button="choose" href="#applications">Заявки</a>
+				</div>
+
+				<div class="content">
+					<div class="make-1" id = "category">
+						<h3> Категории </h3>
+
+						<div class="controller">
+							<a class="create_category" href="create.html">Создать</a>
+						</div>
+
+						<div class="bootstrap">
+							<table>
+								<thead>
+									<tr>
+										<th>Номер</th>
+										<th>Категория</th>
+										<th>Управление</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>Дороги</td>
+										<td><a class="delete" href="?delete#category">Удалить</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="make-1" id = "applications">
+						<h3> Заявки </h3>
+						<div class="cards">
+
+							<div class="card">
+								<p class="title">Решительные проблемы</p>
+								<p>Дата: <span class="badge badge-info">02.02.2022</span></p>
+								
+								<div class="description">
+									<p>Описание заявки:</p>
+									<p class="description-size">Этот город был слишком грязный для его существования</p>
+								</div>
+
+								<p>Категория заявки: <span class="badge badge-info">Дороги</span></p>
+								<p>Статус заявки: <span class="badge badge-info">Решена</span></p>
+
+								<div class="control">
+									<a href="edit.html#applications">Редактировать</a>
+								</div>
+							</div>
+
+							<div class="card">
+								<p class="title">Решительные проблемы</p>
+								<p>Дата: <span class="badge badge-info">02.02.2022</span></p>
+								
+								<div class="description">
+									<p>Описание заявки:</p>
+									<p class="description-size">Этот город был слишком грязный для его существования</p>
+								</div>
+
+								<p>Категория заявки: <span class="badge badge-info">Дороги</span></p>
+								<p>Статус заявки: <span class="badge badge-info">Решена</span></p>
+
+								<div class="control">
+									<a href="edit.html#applications">Редактировать</a>
+								</div>
+							</div>
+
+							<div class="card">
+								<p class="title">Решительные проблемы</p>
+								<p>Дата: <span class="badge badge-info">02.02.2022</span></p>
+								
+								<div class="description">
+									<p>Описание заявки:</p>
+									<p class="description-size">Этот город был слишком грязный для его существования</p>
+								</div>
+
+								<p>Категория заявки: <span class="badge badge-info">Дороги</span></p>
+								<p>Статус заявки: <span class="badge badge-info">Решена</span></p>
+
+								<div class="control">
+									<a href="edit.html#applications">Редактировать</a>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<footer>
+		<div class="container">
+			<div class="about-of-company">
+				<span>Company of procity 2022</span>
+				<span>Will be we fixed problems with u?</span>
+			</div>
+
+			<div class="social">
+				<a href="#ig">
+					<img src="assets/images/icon-2.png">
+				</a>
+
+				<a href="#vk">
+					<img src="assets/images/icon-1.png">
+				</a>
+			</div>
+		</div>
+	</footer>
+
+</html>

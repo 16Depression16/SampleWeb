@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>ProCity</title>
+
+		<link rel="stylesheet" type="text/css" href="assets/css/city.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/admin.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/admin-create.css">
+
+		<script type="text/javascript" src="assets/js/jquery.js"></script>
+		<script type="text/javascript" src="assets/js/sample.js"></script>
+		<script type="text/javascript" src="assets/js/admin-control.js"></script>
+		<script type="text/javascript">
+			location.hash = "#category";
+		</script>
+	</head>
+
+	<header>
+		<div class="container">
+			<div class="header-box">
+				<div class="logo">LOGO</div>
+				<div class="navigation">
+					<a href="#goto">Вход</a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<body>
+		<div class="container">
+			<div class="admin-content">
+				<div class="admin-nav">
+					<span>Навигация</span>
+					<a class="active-cat" data-button="choose" href="admin.html#category">Категории</a>
+					<a data-button="choose" href="admin.html#applications">Заявки</a>
+				</div>
+
+				<div class="content">
+					<div class="make-1" id = "category">
+						<h3> Создание категории </h3>
+
+						<form class="category-content">
+							<div class="form-item">
+								<input type="text" name="register_fio" placeholder="Название" required="">
+							</div>
+
+							<div class="control">
+								<a class="create-thread create-task"> Создать </a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<footer>
+		<div class="container">
+			<div class="about-of-company">
+				<span>Company of procity 2022</span>
+				<span>Will be we fixed problems with u?</span>
+			</div>
+
+			<div class="social">
+				<a href="#ig">
+					<img src="assets/images/icon-2.png">
+				</a>
+
+				<a href="#vk">
+					<img src="assets/images/icon-1.png">
+				</a>
+			</div>
+		</div>
+	</footer>
+
+</html>

@@ -1,0 +1,184 @@
+section.cabinet {
+	margin: 40px 0px;
+}
+
+section.cabinet .container {
+	display: grid;
+	grid-template-columns: 0.5fr 1fr;
+	grid-gap: 30px;
+}
+
+section.cabinet .card-info {
+	box-shadow: 0 12.5px 20px 1px rgb(0 0 0 / 30%);
+	background: linear-gradient(90deg, #53697680, lightblue);
+	padding: 20px;
+	height: fit-content;
+} 
+
+.logout, .create-thread {
+	display: block;
+	margin-top: 20px;
+    border: none;
+    outline: none;
+    padding: 5px 0px;
+    padding-bottom: 7px;
+    font-size: 18px;
+    background: none;
+    color: black;
+    cursor: pointer;
+    border-style: solid;
+    border-image: linear-gradient(125deg, #292E4990, #53697690) 1 200%;
+    border-image-slice: 1;
+    letter-spacing: 2px;
+}
+
+.create-thread {
+	background: linear-gradient(250deg, #292E4950, #53697650);
+	border: none;
+	color: white;
+	text-decoration: none;
+}
+
+.create-thread:hover {
+	background: linear-gradient(250deg, #292E4990, #53697690);
+}
+
+.logout:hover , .create-thread:hover{
+    background: linear-gradient(125deg, #292E4990, #53697690);
+    color: white;
+}
+
+.name-fio {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	margin-top: 0px;
+}
+
+.email-link {
+	letter-spacing: 1px;
+	font-size: 18px;
+}
+
+.card-problems {
+	background: #e7e3e380;
+	box-shadow: 0px 0px 25px 0px rgb(126 55 216 / 5%);
+}
+
+.problem-title {
+	padding: 18px;
+	border-bottom: 2px solid black;
+	text-align: left;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	background: linear-gradient(270deg, #53697680, lightblue);
+	font-size: 18px;
+}
+
+.control {
+	display: block;
+	padding: 0px 18px;
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.problems {
+	margin-top: 25px;
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+	max-height: 200px;
+}
+th, td {
+	padding: 15px;
+	background-color: rgba(255, 255, 255, 0.2);
+	color: black;
+}
+
+td {
+	color: black;
+}
+
+th {
+}
+thead th {
+	background: #53697650;
+}
+tbody tr:hover {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+tbody td {
+	position: relative;
+}
+tbody td:hover:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: -9999px;
+	bottom: -9999px;
+	background-color: rgba(255, 255, 255, 0.2);
+	z-index: -1;
+}
+
+
+form > div > textarea,
+form > div > select,
+.input-trigger {
+	padding: 18px;
+	display: block;
+	margin-bottom: 20px;
+	outline: none;
+	border: none;
+	background: #add8e685;
+	box-sizing: border-box;
+	max-width: 100%;
+	max-height: 80px;
+	width: 100%;
+	min-width: 100%;
+}
+
+form > div > select {
+	color: white;
+}
+
+
+select option {
+	color: black;
+}
+
+form > div > select {
+	-webkit-appearance: none;
+	background-image: linear-gradient(45deg, transparent 50%, black 50%), linear-gradient(135deg, black 50%, transparent 50%), linear-gradient(to right, skyblue, skyblue);
+	background-position: calc(100% - 20px) calc(1em + 7px), calc(100% - 15px) calc(1em + 7px), 101% 0;
+	background-size: 5px 5px, 5px 5px, 3.5em 4.5em;
+	background-repeat: no-repeat;
+}
+
+
+.input-file {
+  opacity: 0;
+  display: none;
+}
+
+.input-trigger {
+	cursor: pointer;
+}
+
+.input-trigger:hover {
+  opacity: 0.8;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
