@@ -144,4 +144,27 @@
 		exit(toJson(['success' => true, 'message' => 'Заявка создана и добавлена в ваш личный кабинет ожидайте рассмотрения.']));
 	}
 
+	// Удаление заявки если заявка имеет значение статуса новая
+	if ($data['method'] == 'delete_problem') {
+		if (!isAuth()) {
+			exit(toJson(['delete_error' => true, 'delete_message' => 'Вы не авторизировались в личный кабинет.']));
+		}
+
+		$problem = selectOne($database, 'SELECT * FROM problems WHERE id = "'.$data['number'].'"');
+		if ($problem == null) {
+			exit(toJson(['delete_error' => true, 'delete_message' => 'Заявка не найдена.']));
+		}
+
+		if ($problem['user_id'] != $_SESSION['user']['id']) {
+			exit(toJson(['delete_error' => true, 'delete_message' => 'Данная заявка не принадлежит вам.']));
+		}
+
+		if ($problem['state'] != 'Новая') {
+			exit(toJson(['delete_error' => true, 'delete_message' => 'Данная заявка имеет статус "Отклонена", "Решена". Удалить данную заявку невозможно.']));
+		}
+
+		sql_request($database, 'DELETE FROM problems WHERE id = "'.$data['number'].'"');
+		exit(toJson(['delete_success' => true, 'delete_message' => 'Заявка успешно удалена.']));
+	}
+
 ?>

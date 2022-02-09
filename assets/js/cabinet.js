@@ -1,5 +1,7 @@
 $(window).ready(function () {
 
+    var problems_reload = false;
+
     // Обработчик создания заявки
     $('button[data-type="register_thread"]').bind('click', function () {
         $('.result').html('');
@@ -45,9 +47,11 @@ $(window).ready(function () {
     if (location.pathname.includes('cabinet')) {
         sendGet({ method: 'problems_requests' });
 
-        setInterval(() => {
-            sendGet({ method: 'problems_requests' });
-        }, 5000);
+        if (problems_reload) {
+            setInterval(() => {
+                sendGet({ method: 'problems_requests' });
+            }, 5000);
+        }
     }
 
     // Отправка запроса
@@ -79,6 +83,30 @@ $(window).ready(function () {
         });
     }
 
+    function sendPostDelete (object) {
+        $.ajax({
+            url: "/app/request.php",
+            type: "POST",
+            cache: false,
+            data: object,
+            dataType: 'json',
+            success: function (result) {
+                if (result.delete_error) {
+                     $('.response-server').html(showMsg('danger', 'Ошибка', result.delete_message));
+                }
+
+                if (result.delete_success) {
+                    sendGet({ method: 'problems_requests' });
+                    $('.response-server').html(showMsg('success', 'Успех', result.delete_message));
+                }
+
+                setTimeout(function () {
+                    $('.response-server').html('');
+                }, 7000);
+            }
+        });
+    }
+
     function sendGet (object) {
         $.ajax({
             url: "/app/statistic.php",
@@ -101,7 +129,21 @@ $(window).ready(function () {
                     $('.response').html('');
                     
                     result.table.forEach(value => {
-                        $('tbody').prepend(raw(value.date, value.title, value.description, value.category_id, value.state));
+                        $('tbody').prepend(raw(value.id, value.date, value.title, value.description, value.category_id, value.state));
+                    });
+
+                    $('.button-delete').bind('click', function (event) {
+                        event.preventDefault();
+
+                        var id = $(this).attr("data-number");
+                        var title = $(this).attr("data-title");
+                        var conf = confirm("Точно удалить с названием: " + title);
+
+                        if (conf) {
+                            sendPostDelete({method: 'delete_problem', number: id});
+                        } else {
+                            alert('Действие отменено');
+                        }
                     });
                 }
             }
@@ -115,13 +157,14 @@ $(window).ready(function () {
         '</div>'
     }
 
-    function raw (date, title, description, category, state) {
+    function raw (id, date, title, description, category, state) {
         return '<tr>' +
             '<td>'+date+'</td>' +
             '<td>'+title+'</td>' +
             '<td>'+description+'</td>' +
             '<td>'+category+'</td>' +
             '<td>'+state+'</td>' +
+            '<td><button class="button-delete" data-number="'+id+'" data-title="'+title+'">Удалить</button></td>' +
         '</tr>';
     }
 

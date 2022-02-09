@@ -34,6 +34,7 @@
 					</div>
 
 					<div class="response"> </div>
+					<div class="response-server"> </div>
 
 					<div class="problems"> 
 						<table style="display: none;">
@@ -44,6 +45,7 @@
 									<th>Описание заявки</th>
 									<th>Категория заявки</th>
 									<th>Статус заявки</th>
+									<th>Действие</th>
 								</tr>
 							</thead>
 							<tbody>

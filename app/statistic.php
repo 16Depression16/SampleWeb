@@ -17,9 +17,12 @@
 	}
 
 	if ($data['method'] == 'problems_requests') {
+		// Проверяем авторизирован ли пользователь
 		if (isAuth()) {
+			// Выборка из таблицы
 			$select = selectAll($database, 'SELECT * FROM problems WHERE user_id = "'.$_SESSION['user']['id'].'"');
 
+			// Вывод данных и проверки
 			if ($select == null) {
 				exit(toJson(['error' => true, 'table' => null]));
 			}
