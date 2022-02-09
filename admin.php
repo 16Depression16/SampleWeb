@@ -112,12 +112,35 @@
 											<p class="description-size"><?php echo $value['description']; ?></p>
 										</div>
 
+										<?php if ($value['state'] == 'Отклонена') { ?>
+											<div class="description">
+												<p>Причина отклонения:</p>
+												<p class="description-size"><?php echo $value['reason_decline']; ?></p>
+											</div>
+										<?php } ?>
+
 										<p>Категория заявки: <span class="badge badge-info"><?php echo $category['name']; ?></span></p>
 										<p>Статус заявки: <span class="badge badge-info"><?php echo $value['state']; ?></span></p>
 
+										<?php if ($value['state'] == 'Новая') { ?>
+											<div class="control">
+												<a href="edit.php?id=<?php echo $value['id']; ?>#applications">Редактировать</a>
+											</div>
+										<?php } else { ?>
+											<div class="control">
+												<a href="/admin.php#applications">Завершено</a>
+											</div>
+										<?php } ?>
+
 										<div class="control">
-											<a href="edit.php?id=<?php echo $value['id']; ?>#applications">Редактировать</a>
+											<a href="/assets/images/uploads/<?php echo $value['image_from']; ?>" download>Посмотреть проблему</a>
 										</div>
+
+										<?php if ($value['state'] == 'Решена') { ?>
+											<div class="control">
+											<a href="/assets/images/uploads/<?php echo $value['image_to']; ?>" download>Посмотреть решение</a>
+										</div>
+										<?php } ?>
 									</div>
 								<?php
 									}
