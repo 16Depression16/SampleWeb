@@ -15,4 +15,25 @@ $(window).ready(function () {
 		$('a').removeClass('active-cat');
 		$(this).addClass("active-cat");
 	});
+
+	$('.delete').bind('click', function () {
+		var number = $(this).attr("data-number");
+		var conf = confirm("Вы дейсвительно хотите удалить категорию под номером: " + number + "?");
+
+		if (conf) {
+			location.href = $(this).attr("data-link");
+		} else {
+			$('.result').html('');
+			$('.result').html(showMsg('danger', 'Ошибка', 'Действие отменено.'));
+		}
+	});
+
+
+	if (location.href.includes("delete")) {
+		setTimeout(function () {
+			$('.result').html('')
+		}, 3000);	
+	}
+
+
 });

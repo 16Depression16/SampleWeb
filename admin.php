@@ -13,6 +13,29 @@
 		exit('<script type="text/javascript">location.href="/";</script>');
 	}
 
+	if (isset($_GET['delete'])) {
+		if ($_SESSION['lastDeletedID'] != $_GET['delete']) {
+			$_SESSION['lastDeletedID'] = $_GET['delete'];
+
+			$getLine = selectOne($database, 'SELECT * FROM category WHERE id = "'.$_GET['delete'].'"');
+
+			if ($getLine == null) {
+				$msg = '<div class="ot-alert ot-alert--danger">
+				<h3 class="ot-alert__title">Ошибка</h3>
+				<p>Категория не найдена или удалена ранее</p>
+				</div>';
+			} else {
+				$msg = '<div class="ot-alert ot-alert--success">
+				<h3 class="ot-alert__title">Успех</h3>
+				<p>Категория удалена, а так-же связанные заявки с этой категорией.</p>
+				</div>';
+
+				sql_request($database, 'DELETE FROM category WHERE id = "'.$_GET['delete'].'"');
+				sql_request($database, 'DELETE FROM problems WHERE category_id = "'.$_GET['delete'].'"');
+			}
+		}
+	}
+
 	$data = selectAll($database, 'SELECT * FROM category ORDER BY id DESC');
 ?>
 	<body>
@@ -33,6 +56,9 @@
 						</div>
 
 						<div class="bootstrap">
+							<div class="result category-response">
+								<?php if ($msg != null) echo $msg; ?>
+							</div>
 							<?php if ($data != null) { ?>
 								<table>
 									<thead>
@@ -48,7 +74,7 @@
 												echo '<tr>
 														<td>'.$value['id'].'</td>
 														<td>'.$value['name'].'</td>
-														<td><a class="delete" href="?delete='.$value['id'].'#category">Удалить</a></td>
+														<td><a class="delete" onclick="confirm(\"Вы действительно хотите удалить данную категорию?\")" data-link="?delete='.$value['id'].'#category" data-number="'.$value['id'].'">Удалить</a></td>
 													</tr>';
 											}
 										?>

@@ -21,13 +21,15 @@
 		<div class="admin-content">
 			<div class="admin-nav">
 				<span>Навигация</span>
-				<a class="active-cat" data-button="choose" href="admin.php#category">Категории</a>
-				<a data-button="choose" href="admin.php#applications">Заявки</a>
+				<a class="active-cat" href="admin.php#category">Категории</a>
+				<a href="admin.php#applications">Заявки</a>
 			</div>
 
 			<div class="content">
 				<div class="make-1" id = "category">
 					<h3> Создание категории </h3>
+
+					<div class="result category-response"></div>
 
 					<form class="category-content" method="POST">
 						<div class="form-item">
