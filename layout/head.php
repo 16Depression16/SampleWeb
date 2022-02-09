@@ -1,6 +1,18 @@
 <?php 
 	@session_start();
-	include $_SERVER['DOCUMENT_ROOT'].'/app/functions/user.php'; 
+	include $_SERVER['DOCUMENT_ROOT'].'/app/functions/user.php';
+
+	include $_SERVER['DOCUMENT_ROOT'].'/app/functions/db.php';
+	$database = connect(); // call datbase
+
+	// Обновляем данные из таблицы о пользователе 
+	if (isAuth()) {
+		$select = selectOne($database, 'SELECT * FROM users WHERE id = "'.$_SESSION['user']['id'].'"');
+
+		if ($select != null) {
+			$_SESSION['user']['isAdmin'] = $select['isAdmin'];
+		}
+	}
 ?>
 <!DOCTYPE html>
 <html>

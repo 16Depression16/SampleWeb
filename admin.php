@@ -1,29 +1,18 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>ProCity</title>
+<?php
+	$files = ['admin.css'];
+	$jsFiles = ['admin.js'];
 
-		<link rel="stylesheet" type="text/css" href="assets/css/city.css">
-		<link rel="stylesheet" type="text/css" href="assets/css/admin.css">
+	include 'layout/head.php';
 
-		<script type="text/javascript" src="assets/js/jquery.js"></script>
-		<script type="text/javascript" src="assets/js/sample.js"></script>
-		<script type="text/javascript" src="assets/js/admin.js"></script>
-	</head>
+	if (isset($_GET['logout'])) {
+		session_destroy();
+		exit('<script type="text/javascript">location.href="/";</script>');
+	}
 
-	<header>
-		<div class="container">
-			<div class="header-box">
-				<div class="logo">LOGO</div>
-				<div class="navigation">
-					<a href="#goto">Вход</a>
-				</div>
-			</div>
-		</div>
-	</header>
-
+	if (!isAuth() || !isAdmin()) {
+		exit('<script type="text/javascript">location.href="/";</script>');
+	}
+?>
 	<body>
 		<div class="container">
 			<div class="admin-content">
@@ -123,24 +112,6 @@
 			</div>
 		</div>
 	</body>
-
-	<footer>
-		<div class="container">
-			<div class="about-of-company">
-				<span>Company of procity 2022</span>
-				<span>Will be we fixed problems with u?</span>
-			</div>
-
-			<div class="social">
-				<a href="#ig">
-					<img src="assets/images/icon-2.png">
-				</a>
-
-				<a href="#vk">
-					<img src="assets/images/icon-1.png">
-				</a>
-			</div>
-		</div>
-	</footer>
-
-</html>
+<?php
+	include 'layout/footer.php';
+?>

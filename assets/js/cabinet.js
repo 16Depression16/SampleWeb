@@ -1,6 +1,6 @@
 $(window).ready(function () {
 
-    var problems_reload = false;
+    var problems_reload = true;
 
     // Обработчик создания заявки
     $('button[data-type="register_thread"]').bind('click', function () {
