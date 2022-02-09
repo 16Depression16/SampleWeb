@@ -129,7 +129,7 @@ $(window).ready(function () {
                     $('.response').html('');
                     
                     result.table.forEach(value => {
-                        $('tbody').prepend(raw(value.id, value.date, value.title, value.description, value.category_id, value.state));
+                        $('tbody').prepend(raw(value.id, value.date, value.title, value.description, value.category_id, value.state, value.reason_decline, value.image_to));
                     });
 
                     $('.button-delete').bind('click', function (event) {
@@ -145,6 +145,16 @@ $(window).ready(function () {
                             alert('Действие отменено');
                         }
                     });
+
+                    $('.button-view').bind('click', function (event) {
+                        event.preventDefault();
+
+                        if ($(this).attr("data-reason") == "null") {
+                            downloadSolved($(this).attr("data-image"), '/assets/images/uploads/' + $(this).attr("data-image"));
+                        } else {
+                            $('.response').html(showMsg('danger', 'Отклонена', 'Причина по которой заявка была отклонена: <b>' + $(this).attr("data-reason") + "</b>"));
+                        }
+                    });
                 }
             }
         });
@@ -157,15 +167,31 @@ $(window).ready(function () {
         '</div>'
     }
 
-    function raw (id, date, title, description, category, state) {
+    function raw (id, date, title, description, category, state, reason, image) {
         return '<tr>' +
             '<td>'+date+'</td>' +
             '<td>'+title+'</td>' +
             '<td>'+description+'</td>' +
             '<td>'+category+'</td>' +
             '<td>'+state+'</td>' +
-            '<td><button class="button-delete" data-number="'+id+'" data-title="'+title+'">Удалить</button></td>' +
+            '<td>' +
+                '<button class="button-delete" data-number="'+id+'" data-title="'+title+'">Удалить</button>' +
+                '<button class="button-view mt-10" data-reason="'+reason+'" data-image="'+image+'">'+((state == "Отклонена") ? "Узнать причину" : "Посмотреть фото")+'</button>' +
+            '</td>' +
         '</tr>';
+    }
+
+    function downloadSolved (filename, dataUrl) {
+        var link = document.createElement("a");
+        link.download = filename;
+        link.target = "_blank";
+
+        link.href = dataUrl;
+        document.body.appendChild(link);
+        link.click();
+
+        document.body.removeChild(link);
+        delete link;
     }
 
 

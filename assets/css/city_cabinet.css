@@ -187,7 +187,8 @@ form > div > select {
 	text-align: left;
 }
 
-.button-delete {
+.button-delete,
+.button-view {
 	outline: none;
 	border: 0px;
 	border: 2px solid black;
@@ -195,7 +196,8 @@ form > div > select {
 	cursor: pointer;
 }
 
-.button-delete:hover {
+.button-delete:hover,
+.button-view:hover {
 	background: black;
 	color: white;
 }

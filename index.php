@@ -13,47 +13,48 @@
 		<section class="solved-problems">
 			<div class="container">
 				<h3> Примеры наших работ </h3>
-				
-				<div class="box">
-					<div class="box-item">
-						<span class="title">Решенная проблема 1</span>
-						
-						<div class="more-info">
-							<span class="category">Категория 1</span>
-							<span class="time">14 декабря 2022</span>
-						</div>
+				<?php 
+					$select = selectAll($database, 'SELECT * FROM problems WHERE state = "Решена"');
+					shuffle($select);
+					if (@count($select) > 0) {
+				?>
+					<div class="box">
+						<?php 
+							$i = 0;
+							foreach ($select as $key => $value) {
+								$value['category'] = selectOne($database, 'SELECT * FROM category WHERE id = "'.$value['category_id'].'"')['name'];
+						?>
+							<div class="box-item">
+								<span class="title"><?php echo $value['title']; ?></span>
 
-						<img src="assets/images/solved-1.png">
+								<div class="more-info">
+									<span class="category"><?php echo $value['category']; ?></span>
+									<span class="time"><?php echo $value['date']; ?></span>
+								</div>
+
+								<div class="image-source">
+									<img class="problem-image" src="/assets/images/uploads/<?php echo $value['image_from']; ?>" data-from="/assets/images/uploads/<?php echo $value['image_from']; ?>" data-to="/assets/images/uploads/<?php echo $value['image_to']; ?>">
+								</div>
+							</div>
+						<?php if ($i >= 4) break; ?>
+						<?php $i++; } ?>
 					</div>
+				<?php } else { ?>
+					<style type="text/css">
+						section.solved-problems > div > div {
+							display: block;
+							text-align: left;
+						}
 
-					<div class="box-item">
-						<span class="title">Решенная проблема 1</span>
-						<div class="more-info">
-							<span class="category">Категория 1</span>
-							<span class="time">14 декабря 2022</span>
-						</div>
-						<img src="assets/images/solved-1.png">
+						section.solved-problems > div > div p {
+							margin-bottom: 0px;
+						}
+					</style>
+					<div class="ot-alert ot-alert--danger">
+						<h3 class="ot-alert__title">Проблем не найдено</h3>
+						<p>Не найдено решенных проблем</p>
 					</div>
-
-					<div class="box-item">
-						<span class="title">Решенная проблема 1</span>
-						<div class="more-info">
-							<span class="category">Категория 1</span>
-							<span class="time">14 декабря 2022</span>
-						</div>
-						<img src="assets/images/solved-1.png">
-					</div>
-
-					<div class="box-item">
-						<span class="title">Решенная проблема 1</span>
-						<div class="more-info">
-							<span class="category">Категория 1</span>
-							<span class="time">14 декабря 2022</span>
-						</div>
-
-						<img src="assets/images/solved-1.png">
-					</div>
-				</div>
+				<?php } ?>
 			</div>
 		</section>
 

@@ -75,6 +75,25 @@ $(window).ready(function () {
         request(object);
     });
 
+    $('.tallback-send').bind('click', function (event) {
+        event.preventDefault();
+        var name = $('input[name="tallback-name"]').val();
+        var email = $('input[name="tallback-email"]').val();
+        var reason = $('textarea[name="tallback-reason"]').val();
+
+        if (!isCorrectFIO(name)) {
+            alert('Некорректно указано имя отправителя');
+            return;
+        }
+
+        if (!validateEmail(email)) {
+            alert('Некорректно указана почта');
+            return;
+        }
+
+        alert(name + " ваше письмо с содержанием: \n" + reason + "\n отправлено успешно, ответ прийдёт на почту: " + email);
+    });
+
     if (location.pathname == "/") {
         requestGet({ method: 'solved' });
 
@@ -126,6 +145,18 @@ $(window).ready(function () {
             }
         });
     }
+
+    $(".problem-image").hover(
+        function() {
+            $( this ).fadeIn( 500 );
+            $(this).attr("src", $(this).attr("data-to"));
+        }, 
+
+        function() {
+            $( this ).fadeIn( 500 );
+           $(this).attr("src", $(this).attr("data-from"));
+        }
+    );
 
     // Работа с полем для фалйов вывод имени выбранного файла.
     $('.input-file').on('change', () => {

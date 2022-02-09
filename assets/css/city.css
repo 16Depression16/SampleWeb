@@ -189,10 +189,36 @@ section.solved-problems > div > div > div {
 	box-shadow: 0 12.5px 20px 1px rgb(0 0 0 / 30%);
 }
 
-section.solved-problems > div > div > div > img {
+section.solved-problems > div > div > div > div > img {
 	width: 100%;
 	margin-bottom: -4px;
 	opacity: 0.8;
+}
+
+.image-source {
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    -webkit-transition: border-color 0.1s;
+    transition: border-color 0.1s;
+    overflow: hidden;
+}
+
+.mt-10 {
+	margin-top: 10px;
+}
+
+.problem-image {
+	max-height: 300px; 
+	object-fit: cover;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+}
+
+.box-item:hover .problem-image {
+	-webkit-transform: scale(1.25) rotate(0.01deg);
+	transform: scale(1.25) rotate(0.01deg);
+	opacity: 0.5;
 }
 
 section.tallback {
@@ -212,6 +238,10 @@ section.tallback > div > form > h3 {
 	margin-block-start: 0px;
 	margin-bottom: 50px;
 	font-size: 25px;
+}
+
+.tallback input {
+	color: white;
 }
 
 form > div > input,
