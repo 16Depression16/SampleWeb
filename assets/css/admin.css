@@ -242,6 +242,12 @@ span.badge {
 	cursor: pointer;
 }
 
+.category-content .control a:hover 
+{
+	background: linear-gradient(125deg, lightblue, #53697650);
+}
+
+
 .category-content > div > input {
 	box-sizing: border-box;
 }
