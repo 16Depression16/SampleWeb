@@ -6,6 +6,7 @@
 		return $bool;
 	}
 
+    // Проверка формата файла
 	function isCorrectFormatFile ($file) {
         if ($file['type']) {
             if (in_array($file['type'], ['image/png', 'image/jpeg', 'image/jpg']))

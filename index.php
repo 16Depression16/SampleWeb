@@ -1,5 +1,5 @@
 <?php 
-	include 'layout/head.php';
+	include 'layout/head.php'; // подгрузка файла
 ?>
 	<body>
 		<section class="main">
@@ -15,8 +15,8 @@
 				<h3> Примеры наших работ </h3>
 				<?php 
 					$select = selectAll($database, 'SELECT * FROM problems WHERE state = "Решена"');
-					shuffle($select);
-					if (@count($select) > 0) {
+					shuffle($select); // перемешать массив
+					if (@count($select) > 0) { // провоерка на количество
 				?>
 					<div class="box">
 						<?php 

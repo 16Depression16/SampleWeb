@@ -33,7 +33,7 @@
 		<script type="text/javascript" src="/assets/js/jquery.js"></script>
 		<script type="text/javascript" src="/assets/js/sample.js"></script>
 		<?php
-			// Опция для загрузки дополнительных css файлов
+			// Опция для загрузки дополнительных js файлов
 			if (@count($jsFiles) > 0) {
 				foreach ($jsFiles as $js) {
 					echo '<script type="text/javascript" src="/assets/js/'.$js.'"></script>';

@@ -102,7 +102,7 @@ $(window).ready(function () {
 
                 setTimeout(function () {
                     $('.response-server').html('');
-                }, 7000);
+                }, 10000);
             }
         });
     }
@@ -152,7 +152,7 @@ $(window).ready(function () {
                         if ($(this).attr("data-reason") == "null") {
                             downloadSolved($(this).attr("data-image"), '/assets/images/uploads/' + $(this).attr("data-image"));
                         } else {
-                            $('.response').html(showMsg('danger', 'Отклонена', 'Причина по которой заявка была отклонена: <b>' + $(this).attr("data-reason") + "</b>"));
+                            $('.response-server').html(showMsg('danger', 'Отклонена', 'Причина по которой заявка была отклонена: <b>' + $(this).attr("data-reason") + "</b>"));
                         }
                     });
                 }
