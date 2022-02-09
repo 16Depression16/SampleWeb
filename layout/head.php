@@ -41,7 +41,11 @@
 						<a href="#goto">Вход</a>
 					<?php } else { ?>
 						<a href="/cabinet.php">Личный кабинет</a>
-					<?php } ?>	
+					<?php } ?>
+
+					<?php if (isAdmin()) { ?>
+						<a href="/admin.php">Админ-панель</a>
+					<?php } ?>
 				</div>
 			</div>
 		</div>

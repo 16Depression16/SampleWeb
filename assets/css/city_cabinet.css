@@ -178,6 +178,14 @@ form > div > select {
 	opacity: 0.8;
 }
 
+.response {
+	padding: 0px 20px;
+}
+
+.ot-alert__title {
+	text-align: left;
+}
+
 footer {
 	position: absolute;
 	bottom: 0;

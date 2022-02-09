@@ -20,8 +20,8 @@
 		<section class="cabinet">
 			<div class="container">
 				<div class="card-info">
-					<p class="name-fio"> Иванов Иван Александрович </p>
-					<p class="email-link"> Привязанная почта: test@mail.ru</p>
+					<p class="name-fio"> <?php echo $_SESSION['user']['name']; ?> </p>
+					<p class="email-link"> Привязанная почта: <?php echo $_SESSION['user']['email']; ?></p>
 
 					<a class="logout" href="?logout"> Выйти </a>
 				</div>
@@ -33,8 +33,10 @@
 						<a class="create-thread" href="#new_thread"> Создать заявку </a>
 					</div>
 
+					<div class="response"> </div>
+
 					<div class="problems"> 
-						<table>
+						<table style="display: none;">
 							<thead>
 								<tr>
 									<th>Дата</th>
@@ -45,13 +47,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>04.02.2022</td>
-									<td>Решите проблему с дорогами!</td>
-									<td>На участке N находятся такие-то проблемы</td>
-									<td>Дороги</td>
-									<td>Решена</td>
-								</tr>
+								
 							</tbody>
 						</table>
 					</div>
