@@ -111,7 +111,6 @@ $(window).ready(function () {
             data: object,
             dataType: 'json',
             success: function (result) {
-                console.log(object.method);
                 if (result.error) {
                     $('.result-' + object.method).fadeTo( "slow" , 0.75).append(showMsg('danger', 'Ошибка!', result.message));
                 }

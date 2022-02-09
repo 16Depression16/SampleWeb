@@ -34,6 +34,9 @@
 
 								<div class="image-source">
 									<img class="problem-image" src="/assets/images/uploads/<?php echo $value['image_from']; ?>" data-from="/assets/images/uploads/<?php echo $value['image_from']; ?>" data-to="/assets/images/uploads/<?php echo $value['image_to']; ?>">
+									<div class="problem-description">
+										<?php echo $value['description']; ?>
+									</div>
 								</div>
 							</div>
 						<?php if ($i >= 4) break; ?>

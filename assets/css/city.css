@@ -129,7 +129,7 @@ section.solved-problems > div > .box .box-item img {
 }
 
 section.solved-problems > div > .box .box-item img:hover {
-	opacity: 1;
+	opacity: 0.8;
 }
 
 section.solved-problems > div > .box .box-item span {
@@ -219,6 +219,28 @@ section.solved-problems > div > div > div > div > img {
 	-webkit-transform: scale(1.25) rotate(0.01deg);
 	transform: scale(1.25) rotate(0.01deg);
 	opacity: 0.5;
+}
+
+.problem-description {
+	position: absolute;
+	top: 20%;  
+	-webkit-transition: border-color 0.1s;
+	transition: border-color 0.1s;
+	overflow: hidden;
+	transition: all 1s;
+	width: 80%;
+	text-align: center;
+	opacity: 0;
+	font-weight: bold;
+	left: 10%;
+	color: white;
+}
+
+.image-source:hover > .problem-description {
+	-webkit-transform: scale(1.25) rotate(0.01deg);
+	transform: scale(1.25) rotate(0.01deg);
+	opacity: 1;
+	background: #00000050;
 }
 
 section.tallback {
