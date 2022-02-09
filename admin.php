@@ -37,6 +37,7 @@
 	}
 
 	$data = selectAll($database, 'SELECT * FROM category ORDER BY id DESC');
+	$problems = selectAll($database, 'SELECT * FROM problems ORDER BY id DESC');
 ?>
 	<body>
 		<div class="container">
@@ -95,61 +96,44 @@
 
 					<div class="make-1" id = "applications">
 						<h3> Заявки </h3>
-						<div class="cards">
 
-							<div class="card">
-								<p class="title">Решительные проблемы</p>
-								<p>Дата: <span class="badge badge-info">02.02.2022</span></p>
-								
-								<div class="description">
-									<p>Описание заявки:</p>
-									<p class="description-size">Этот город был слишком грязный для его существования</p>
-								</div>
+						<?php if ($problems != null) { ?>
+							<div class="cards">
+								<?php
+									foreach ($problems as $key => $value) {
+										$category = selectOne($database, 'SELECT * FROM category WHERE id = "'.$value['category_id'].'"');
+								?>
+									<div class="card">
+										<p class="title"><?php echo $value['title']; ?></p>
+										<p>Дата: <span class="badge badge-info"><?php echo $value['date']; ?></span></p>
+										
+										<div class="description">
+											<p>Описание заявки:</p>
+											<p class="description-size"><?php echo $value['description']; ?></p>
+										</div>
 
-								<p>Категория заявки: <span class="badge badge-info">Дороги</span></p>
-								<p>Статус заявки: <span class="badge badge-info">Решена</span></p>
+										<p>Категория заявки: <span class="badge badge-info"><?php echo $category['name']; ?></span></p>
+										<p>Статус заявки: <span class="badge badge-info"><?php echo $value['state']; ?></span></p>
 
-								<div class="control">
-									<a href="edit.php#applications">Редактировать</a>
-								</div>
+										<div class="control">
+											<a href="edit.php?id=<?php echo $value['id']; ?>#applications">Редактировать</a>
+										</div>
+									</div>
+								<?php
+									}
+								?>
 							</div>
-
-							<div class="card">
-								<p class="title">Решительные проблемы</p>
-								<p>Дата: <span class="badge badge-info">02.02.2022</span></p>
-								
-								<div class="description">
-									<p>Описание заявки:</p>
-									<p class="description-size">Этот город был слишком грязный для его существования</p>
-								</div>
-
-								<p>Категория заявки: <span class="badge badge-info">Дороги</span></p>
-								<p>Статус заявки: <span class="badge badge-info">Решена</span></p>
-
-								<div class="control">
-									<a href="edit.php#applications">Редактировать</a>
-								</div>
+						<?php } else { ?>
+							<style type="text/css">
+								h3 {border: none !important; padding-bottom: 0px !important;}
+								p { margin-block-end: 0px }
+								.ot-alert {margin-bottom: 10px; margin-top: 30px !important;}
+							</style>
+							<div class="ot-alert ot-alert--danger">
+								<h3 class="ot-alert__title">Пусто</h3>
+								<p>Заявок не найдено.</p>
 							</div>
-
-							<div class="card">
-								<p class="title">Решительные проблемы</p>
-								<p>Дата: <span class="badge badge-info">02.02.2022</span></p>
-								
-								<div class="description">
-									<p>Описание заявки:</p>
-									<p class="description-size">Этот город был слишком грязный для его существования</p>
-								</div>
-
-								<p>Категория заявки: <span class="badge badge-info">Дороги</span></p>
-								<p>Статус заявки: <span class="badge badge-info">Решена</span></p>
-
-								<div class="control">
-									<a href="edit.php#applications">Редактировать</a>
-								</div>
-							</div>
-
-
-						</div>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
