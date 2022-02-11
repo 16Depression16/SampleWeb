@@ -129,6 +129,7 @@ $(window).ready(function () {
                     $('.response').html('');
                     
                     result.table.forEach(value => {
+                        console.log(value);
                         $('tbody').prepend(raw(value.id, value.date, value.title, value.description, value.category_id, value.state, value.reason_decline, value.image_to));
                     });
 
@@ -168,6 +169,11 @@ $(window).ready(function () {
     }
 
     function raw (id, date, title, description, category, state, reason, image) {
+        var control = "";
+        if (state == 'Решена' || state == 'Отклонена') {
+            control = '<button class="button-view mt-10" data-reason="'+reason+'" data-image="'+image+'">'+((state == "Отклонена") ? "Узнать причину" : "Посмотреть фото")+'</button>';
+        }
+
         return '<tr>' +
             '<td>'+date+'</td>' +
             '<td>'+title+'</td>' +
@@ -176,7 +182,7 @@ $(window).ready(function () {
             '<td>'+state+'</td>' +
             '<td>' +
                 '<button class="button-delete" data-number="'+id+'" data-title="'+title+'">Удалить</button>' +
-                '<button class="button-view mt-10" data-reason="'+reason+'" data-image="'+image+'">'+((state == "Отклонена") ? "Узнать причину" : "Посмотреть фото")+'</button>' +
+                control +
             '</td>' +
         '</tr>';
     }
